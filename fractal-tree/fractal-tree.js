@@ -5,7 +5,7 @@ var angle;
 var treeHeight=0;
 
 function setup() {
-  createCanvas(600, 640);
+  createCanvas(window.innerWidth, window.innerHeight);
   angle = PI/4;
   startVector = createVector(width/2, height);
   endVector = createVector(width/2, height-200);
@@ -23,7 +23,6 @@ function mouseWheel(){
       branches.push(branches[i].spawnBranches(isRight=1));
       branches.push(branches[i].spawnBranches(isRight=0));
       branches[i].branchSpawned=1;
-      console.log(branches, treeHeight);
     }
   }
   treeHeight++;
