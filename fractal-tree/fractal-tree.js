@@ -10,7 +10,7 @@ var jitter=0;
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   angleMode(DEGREES);
-  angle = 45;
+  angle = 40;
   startVector = createVector(width/2, height);
   endVector = createVector(width/2, height-200);
   root = new Branch(startVector,endVector);
@@ -20,8 +20,8 @@ function setup() {
   
 }
 
-function mouseWheel(){
-// function mousePressed(){
+// function mouseWheel(){
+function mousePressed(){
   for(var i=branches.length-1; i>=0 ; i--){
     if(branches[i].branchSpawned==0){
       branches.push(branches[i].spawnBranches(isRight=1));
@@ -31,14 +31,14 @@ function mouseWheel(){
   }
   treeHeight++;
   
-  if(treeHeight>1){
-    for(var j=branches.length-1; j>=0 ; j--){
-      if(branches[j].branchSpawned==0){
-          leaves.push(branches[j].end.copy());
-      }
-    }
+  // if(treeHeight>1){
+  //   for(var j=branches.length-1; j>=0 ; j--){
+  //     if(branches[j].branchSpawned==0){
+  //         leaves.push(branches[j].end.copy());
+  //     }
+  //   }
     
-  }
+  // }
 }
 
 
@@ -63,13 +63,13 @@ function draw() {
     ellipse(leaves[j].x, leaves[j].y, leafSize);
   }
   
-  if(dropLeaves==1){
-    for(var j=0; j < leaves.length; j++){
-      if (leaves[j].y<height-leafSize){
-            leaves[j].y +=random(1,5);
-        }
-    }
-  }
+  // if(dropLeaves==1){
+  //   for(var j=0; j < leaves.length; j++){
+  //     if (leaves[j].y<height-leafSize){
+  //           leaves[j].y +=random(1,5);
+  //       }
+  //   }
+  // }
   
   
 }
@@ -107,7 +107,7 @@ function Branch(begin, end){
       dir.rotate(-angle);
     }
     angle = angle * 0.99
-    dir.mult(0.67);
+    dir.mult(0.68);
     var newEnd = p5.Vector.add(this.end, dir)
     var branch = new Branch(this.end, newEnd);
     return branch;
